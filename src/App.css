@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: whitesmoke;
+}
+
+.defaultBtn {
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.customCheckBox {
+  width: 15px;
+  height: 15px;
+  background: #F7FAFC;
+  border: 1px solid #E8E8E8;
+  border-radius: 50px;
+  display: inline-flex;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.App {
+  margin: 0 auto;
+  display: flex;
+  max-width: 1440px;
+}
+@media screen and (max-width: 1120px) {
+  .App {
+    flex-direction: column;
+    max-width: 720px;
+  }
+  .App .startPageImg img {
+    max-width: 100% !important;
+    height: auto;
+    display: block;
+  }
+}
+@media screen and (max-width: 367px) {
+  .App .startPageContentWrapper {
+    transform: scale(0.8);
+  }
+}
+.App .startPageImg {
+  max-height: 900px;
+  max-width: 720px;
+  background-size: cover;
+}
+.App .startPageImg img {
+  object-fit: cover;
+}
+.App .startPageContentWrapper {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.App .startPageContentWrapper .startPageContent h1 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 35px;
+  margin-bottom: 25px;
+}
+.App .startPageContentWrapper .startPageContent .startPageContentEnterLogin p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #4A5568;
+}
+.App .startPageContentWrapper .startPageContent .startPageContentEnterLogin input {
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+  color: #2D3748;
+  padding: 17px 200px 17px 15px;
+}
+.App .startPageContentWrapper .startPageContent .rememberOrForgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+.App .startPageContentWrapper .startPageContent .rememberOrForgot .rememberMe {
+  display: flex;
+  align-items: center;
+}
+.App .startPageContentWrapper .startPageContent .rememberOrForgot span {
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #2D3748;
+}
+.App .startPageContentWrapper .startPageContent .rememberOrForgot a {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #2C5282;
+  text-decoration: none;
+}
+.App .startPageContentWrapper .startPageContent .startPageContentSignUp {
+  background-color: #04C35C;
+  margin-top: 35px;
+  margin-bottom: 15px;
+}
+.App .startPageContentWrapper .startPageContent .startPageContentSignIn {
+  background-color: #2D3748;
+}
+
+/*# sourceMappingURL=App.css.map */
