@@ -1,24 +1,23 @@
 import './App.css'
 import React from "react";
+import Modal from "./components/modal";
 function App() {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
     const [isRemember, setIsRemember] = React.useState(false)
-    // React.useEffect(() => {
-    //     console.log(email)
-    //     console.log(password.trim().length)
-    // },[email,password])
+    const [isIncorrectEmailData, setIsIncorrectEmailData] = React.useState(false)
+    const [isIncorrectPasswordLength, setIsIncorrectPasswordLength] = React.useState(false)
+    const [isOpenModal, setIsOpenModal] = React.useState(false)
     function validate(email) {
         let regExp = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
         let address = email
-
-        if(regExp.test(address) == false) {
-            alert('incorrect email');
-
+        setIsOpenModal(true)
+        if(regExp.test(address) === false) {
+            setIsIncorrectEmailData(true)
         }
         else{
             if (password.length > 5) {
-                alert('success')
+
                 if (isRemember === true) {
                     localStorage.setItem('email', email)
                     localStorage.setItem('password', password)
@@ -26,15 +25,23 @@ function App() {
                 }
             }
             else {
-                alert('password length > 6 ')
+                setIsIncorrectPasswordLength(true)
             }
         }
     }
     React.useEffect(() => {
+        localStorage.getItem('email') !== undefined ? setEmail(localStorage.getItem('email')) : setEmail('')
+        localStorage.getItem('password') !== undefined ? setPassword(localStorage.getItem('password')) : setPassword('')
         localStorage.getItem('checkBox') ? setIsRemember(true): setIsRemember(false)
     },[])
   return (
     <div className="App">
+        <Modal
+            isOpen={isOpenModal}
+            setIsOpen={setIsOpenModal}
+            isIncorrectEmailData={isIncorrectEmailData}
+            isIncorrectPasswordLength={isIncorrectPasswordLength}
+        />
         <div className={'startPageImg'}>
             <img src='/img/mountain.jpg' alt="image not found"/>
         </div>
@@ -43,9 +50,9 @@ function App() {
               <h1>Login to your account</h1>
               <div className={'startPageContentEnterLogin'}>
                   <p>Email</p>
-                  <input onChange={(e) => setEmail(e.target.value)} value={localStorage.getItem('email') !== undefined ? localStorage.getItem('email') : ''} placeholder={'John.snow@gmail.com'} type="text"/>
+                  <input onChange={(e) => setEmail(e.target.value)} value={email} placeholder={'John.snow@gmail.com'} type="text"/>
                   <p>Password</p>
-                  <input onChange={(e) => setPassword(e.target.value)} value={localStorage.getItem('password') !== undefined ? localStorage.getItem('password') : ''} style={{color: '#000'}} placeholder={'*********'}  type="password"/>
+                  <input onChange={(e) => setPassword(e.target.value)} value={password} style={{color: '#000'}} placeholder={'*********'}  type="password"/>
                   <div className={'rememberOrForgot'}>
                       <div className={'rememberMe'}>
                           <div onClick={() => setIsRemember(!isRemember)} style={isRemember ? {backgroundColor: "#04C35C"} : {}  } className={'customCheckBox'}></div>
